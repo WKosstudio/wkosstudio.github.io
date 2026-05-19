@@ -16,52 +16,119 @@
 
 :root {
   --legal-bg: #0d0f12;
-  --legal-panel: #1d1d1c;
   --legal-text: #f3f4ef;
-  --legal-muted: #b9bab5;
-  --legal-line: rgba(255, 255, 255, 0.12);
+  --legal-muted: #9fa2aa;
   --legal-accent: #ffd60a;
+  --legal-accent-strong: #ffe45b;
+  --legal-cyan: #55d6be;
+  --legal-blue: #00f0ff;
+}
+
+/* Custom Scrollbar for Legal Pages */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--legal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 2px solid var(--legal-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--legal-accent);
 }
 
 html,
 body.w-element {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(180deg, #0d0f12 0%, #111316 58%, #0b0c0e 100%) !important;
-  background-size: 34px 34px, 34px 34px, auto !important;
+  min-height: 100% !important;
+  background-color: #0d0f12 !important;
+  background-image:
+    radial-gradient(circle at 50% -20%, rgba(255, 214, 10, 0.15), transparent 50rem),
+    radial-gradient(circle at -10% 40%, rgba(85, 214, 190, 0.07), transparent 40rem),
+    radial-gradient(circle at 110% 80%, rgba(0, 240, 255, 0.04), transparent 45rem),
+    linear-gradient(180deg, #0d0f12 0%, #111316 50%, #08090a 100%) !important;
   color: var(--legal-text) !important;
   font-family: Manrope, system-ui, sans-serif !important;
   white-space: normal !important;
+}
+
+/* Premium Faded Grid overlay for Legal pages */
+body.w-element::after {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.8;
 }
 
 body.w-element > .w-box {
   min-height: 100vh;
 }
 
+/* Floating Glass capsule header for Legal pages */
 nav.w-box {
   position: sticky !important;
-  top: 0 !important;
-  z-index: 5 !important;
-  max-width: 1120px !important;
-  min-height: 82px !important;
-  padding: 0.8rem 1rem !important;
-  backdrop-filter: blur(18px) !important;
+  top: 1rem !important;
+  z-index: 100 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: min(100% - 2rem, 1120px) !important;
+  min-height: 72px !important;
+  margin: 1rem auto 0 !important;
+  padding: 0.6rem 1.5rem !important;
+  background: rgba(20, 23, 27, 0.45) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 nav.w-box img {
   width: 3.25rem !important;
   height: 3.25rem !important;
+  filter: drop-shadow(0 0.75rem 1.4rem rgba(0, 0, 0, 0.36)) !important;
 }
 
 nav.w-box a {
   color: var(--legal-muted) !important;
   font-weight: 800 !important;
+  transition: color 250ms ease, background 250ms ease, transform 250ms ease !important;
 }
 
 nav.w-box a:hover,
 nav.w-box a:focus-visible {
   color: var(--legal-text) !important;
+}
+
+nav.w-box div.w-element a {
+  padding: 0.55rem 1rem !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+nav.w-box div.w-element a:hover,
+nav.w-box div.w-element a:focus-visible {
+  border-color: rgba(255, 214, 10, 0.3) !important;
+  background: rgba(255, 214, 10, 0.06) !important;
+  transform: translateY(-1px) !important;
 }
 
 main.w-box > section.w-box {
@@ -79,15 +146,26 @@ main.w-box section .w-element {
   max-width: 100% !important;
 }
 
+/* Typography Scale */
 main.w-box h1,
-main.w-box h2,
-main.w-box h3 {
+main.w-box h2 {
   margin: 0 0 1.25rem !important;
   color: var(--legal-accent) !important;
   font-family: "Exo 2", sans-serif !important;
-  font-size: clamp(2rem, 5vw, 4rem) !important;
-  line-height: 1.04 !important;
+  font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+  line-height: 1.08 !important;
   letter-spacing: 0 !important;
+  text-align: left !important;
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+main.w-box h3 {
+  margin: 0 0 0.8rem !important;
+  color: var(--legal-accent) !important;
+  font-family: "Exo 2", sans-serif !important;
+  font-size: clamp(1.25rem, 3vw, 1.65rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
   text-align: left !important;
 }
 
@@ -100,28 +178,39 @@ main.w-box p {
   white-space: normal !important;
 }
 
+/* Document section card containers (Webflow compile wrappers) */
 main.w-box section .w-element:has(> h3),
 main.w-box section .w-element:has(> p) {
-  border: 1px solid var(--legal-line) !important;
-  border-radius: 0.5rem !important;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)) !important;
-  box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 1.25rem !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005)) !important;
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+main.w-box section .w-element:has(> h3):hover,
+main.w-box section .w-element:has(> p):hover {
+  border-color: rgba(0, 240, 255, 0.15) !important;
+  background: linear-gradient(145deg, rgba(0, 240, 255, 0.02), rgba(255, 255, 255, 0.01)) !important;
 }
 
 main.w-box section .w-element:has(> h3) {
-  padding: 1.2rem 1.4rem 0 !important;
+  padding: 1.6rem 1.8rem 0 !important;
   border-bottom: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
 
 main.w-box section .w-element:has(> p) {
-  padding: 0 1.4rem 1.4rem !important;
+  padding: 0 1.8rem 1.8rem !important;
   border-top: 0 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
 
+/* Footer card */
 footer.w-box {
   max-width: 1120px !important;
   margin: 2rem auto 0 !important;
@@ -129,13 +218,18 @@ footer.w-box {
 }
 
 footer.w-box > .w-box {
-  border-color: var(--legal-line) !important;
-  border-radius: 0.5rem !important;
-  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 1.25rem !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 1.5rem !important;
 }
 
 footer.w-box a {
   color: var(--legal-muted) !important;
+  transition: color 250ms ease, background 250ms ease, transform 250ms ease !important;
 }
 
 footer.w-box a:hover,
@@ -145,9 +239,26 @@ footer.w-box a:focus-visible {
 
 @media (max-width: 620px) {
   nav.w-box {
-    align-items: flex-start !important;
+    align-items: center !important;
     flex-direction: column !important;
-    row-gap: 0.6rem !important;
+    row-gap: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 1.5rem !important;
+    top: 0.75rem !important;
+    min-height: auto !important;
+  }
+
+  nav.w-box div.w-element {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.15rem !important;
+    width: 100% !important;
+  }
+
+  nav.w-box div.w-element a {
+    padding: 0.45rem 0.65rem !important;
+    font-size: 0.88rem !important;
   }
 
   main.w-box > section.w-box {
@@ -155,10 +266,10 @@ footer.w-box a:focus-visible {
   }
 
   main.w-box section .w-element:has(> h3) {
-    padding: 1rem 1rem 0 !important;
+    padding: 1.2rem 1.2rem 0 !important;
   }
 
   main.w-box section .w-element:has(> p) {
-    padding: 0 1rem 1rem !important;
+    padding: 0 1.2rem 1.2rem !important;
   }
 }
