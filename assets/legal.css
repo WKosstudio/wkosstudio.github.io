@@ -240,29 +240,40 @@ footer.w-box a:focus-visible {
 @media (max-width: 620px) {
   nav.w-box {
     align-items: center !important;
-    flex-direction: column !important;
-    row-gap: 0.5rem !important;
-    padding: 0.75rem 1rem !important;
-    border-radius: 1.5rem !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 999px !important;
     top: 0.75rem !important;
     min-height: auto !important;
   }
 
+  nav.w-box img {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+  }
+
   nav.w-box div.w-element {
     display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 0.15rem !important;
-    width: 100% !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    gap: 0.1rem !important;
+    width: auto !important;
   }
 
   nav.w-box div.w-element a {
-    padding: 0.45rem 0.65rem !important;
-    font-size: 0.88rem !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.78rem !important;
   }
 
   main.w-box > section.w-box {
     padding-top: 3rem !important;
+  }
+
+  main.w-box h1,
+  main.w-box h2 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+    line-height: 1.15 !important;
   }
 
   main.w-box section .w-element:has(> h3) {
@@ -271,5 +282,28 @@ footer.w-box a:focus-visible {
 
   main.w-box section .w-element:has(> p) {
     padding: 0 1.2rem 1.2rem !important;
+  }
+
+  footer.w-box > .w-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1rem !important;
+    padding: 1.25rem !important;
+  }
+
+  footer.w-box div.w-element {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  footer.w-box div.w-element.c1imtck3 {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1rem !important;
   }
 }
