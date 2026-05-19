@@ -1,0 +1,164 @@
+@font-face {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./Exo2-VariableFont_wght_p-lADbQPw7dL_0HYNsUMc.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./Manrope-VariableFont_wght_sDlgRrTbPzz-ND3rgD5g9.ttf") format("truetype");
+}
+
+:root {
+  --legal-bg: #0d0f12;
+  --legal-panel: #1d1d1c;
+  --legal-text: #f3f4ef;
+  --legal-muted: #b9bab5;
+  --legal-line: rgba(255, 255, 255, 0.12);
+  --legal-accent: #ffd60a;
+}
+
+html,
+body.w-element {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(180deg, #0d0f12 0%, #111316 58%, #0b0c0e 100%) !important;
+  background-size: 34px 34px, 34px 34px, auto !important;
+  color: var(--legal-text) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+  white-space: normal !important;
+}
+
+body.w-element > .w-box {
+  min-height: 100vh;
+}
+
+nav.w-box {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5 !important;
+  max-width: 1120px !important;
+  min-height: 82px !important;
+  padding: 0.8rem 1rem !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+nav.w-box img {
+  width: 3.25rem !important;
+  height: 3.25rem !important;
+}
+
+nav.w-box a {
+  color: var(--legal-muted) !important;
+  font-weight: 800 !important;
+}
+
+nav.w-box a:hover,
+nav.w-box a:focus-visible {
+  color: var(--legal-text) !important;
+}
+
+main.w-box > section.w-box {
+  padding: 4.5rem 1rem !important;
+}
+
+main.w-box > section.w-box > .w-box {
+  display: block !important;
+  max-width: 920px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+main.w-box section .w-element {
+  max-width: 100% !important;
+}
+
+main.w-box h1,
+main.w-box h2,
+main.w-box h3 {
+  margin: 0 0 1.25rem !important;
+  color: var(--legal-accent) !important;
+  font-family: "Exo 2", sans-serif !important;
+  font-size: clamp(2rem, 5vw, 4rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+}
+
+main.w-box p {
+  margin: 0 !important;
+  color: var(--legal-muted) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.8 !important;
+  white-space: normal !important;
+}
+
+main.w-box section .w-element:has(> h3),
+main.w-box section .w-element:has(> p) {
+  border: 1px solid var(--legal-line) !important;
+  border-radius: 0.5rem !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)) !important;
+  box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.24) !important;
+}
+
+main.w-box section .w-element:has(> h3) {
+  padding: 1.2rem 1.4rem 0 !important;
+  border-bottom: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+main.w-box section .w-element:has(> p) {
+  padding: 0 1.4rem 1.4rem !important;
+  border-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+footer.w-box {
+  max-width: 1120px !important;
+  margin: 2rem auto 0 !important;
+  padding: 2rem 1rem 2.5rem !important;
+}
+
+footer.w-box > .w-box {
+  border-color: var(--legal-line) !important;
+  border-radius: 0.5rem !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+footer.w-box a {
+  color: var(--legal-muted) !important;
+}
+
+footer.w-box a:hover,
+footer.w-box a:focus-visible {
+  color: var(--legal-text) !important;
+}
+
+@media (max-width: 620px) {
+  nav.w-box {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    row-gap: 0.6rem !important;
+  }
+
+  main.w-box > section.w-box {
+    padding-top: 3rem !important;
+  }
+
+  main.w-box section .w-element:has(> h3) {
+    padding: 1rem 1rem 0 !important;
+  }
+
+  main.w-box section .w-element:has(> p) {
+    padding: 0 1rem 1rem !important;
+  }
+}
