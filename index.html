@@ -228,17 +228,36 @@
         <div class="updates-panel" data-reveal>
           <div>
             <p class="eyebrow">Updates</p>
-            <h2>No fake newsletter form. Just working links.</h2>
+            <h2>Stay updated on new games & experiments.</h2>
           </div>
           <div class="updates-content">
             <p>
-              Until there is a real mailing list backend, the cleanest way to stay
-              in touch is through social media or email. Static sites can be sharp
-              and honest at the same time.
+              Subscribe to the WKos Studio newsletter. No spam, only honest updates about major game releases and public playtests.
             </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="mailto:wkosstudio@gmail.com?subject=Hello%20WKos%20Studio">Email WKos Studio</a>
-              <a class="button button-secondary" href="https://www.youtube.com/@WKosStudio" target="_blank" rel="noopener noreferrer">Follow on YouTube</a>
+            <form id="subscribe-form" class="subscribe-form">
+              <div class="input-group">
+                <input
+                  type="email"
+                  name="email"
+                  id="subscribe-email"
+                  class="subscribe-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+                <button type="submit" class="button button-primary subscribe-btn">
+                  <span>Subscribe</span>
+                  <svg class="spinner" viewBox="0 0 50 50" aria-hidden="true">
+                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                  </svg>
+                </button>
+              </div>
+              <p class="form-feedback error-feedback" id="form-error"></p>
+            </form>
+            <div class="form-feedback success-feedback" id="form-success">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>Thank you! You've successfully subscribed.</span>
             </div>
           </div>
         </div>
@@ -323,6 +342,77 @@
         requestAnimationFrame(updateMouseGlow);
       };
       updateMouseGlow();
+
+      // ==========================================================================
+      // Newsletter Subscription Logic (Google Forms Integration)
+      // ==========================================================================
+      
+      // НАЛАШТУВАННЯ GOOGLE FORMS:
+      // 1. Замініть 'YOUR_GOOGLE_FORM_ACTION_URL' на URL дії форми (закінчується на /formResponse)
+      // 2. Замініть 'YOUR_GOOGLE_FORM_EMAIL_FIELD' на ім'я поля вводу (наприклад, entry.1804791090)
+      const GOOGLE_FORM_ACTION_URL = 'YOUR_GOOGLE_FORM_ACTION_URL';
+      const GOOGLE_FORM_EMAIL_FIELD = 'YOUR_GOOGLE_FORM_EMAIL_FIELD';
+
+      const subscribeForm = document.getElementById('subscribe-form');
+      if (subscribeForm) {
+        subscribeForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const emailInput = document.getElementById('subscribe-email');
+          const submitBtn = subscribeForm.querySelector('.subscribe-btn');
+          const errorFeedback = document.getElementById('form-error');
+          const successFeedback = document.getElementById('form-success');
+          
+          // Скидання стану помилок
+          errorFeedback.classList.remove('is-visible');
+          errorFeedback.textContent = '';
+          
+          // Візуальний стан завантаження
+          submitBtn.classList.add('is-loading');
+          submitBtn.disabled = true;
+          emailInput.disabled = true;
+          
+          const emailValue = emailInput.value.trim();
+          
+          // Локальна імітація успішного запиту, якщо налаштування ще дефолтні (для тестів інтерфейсу)
+          const isPlaceholder = GOOGLE_FORM_ACTION_URL.includes('YOUR_GOOGLE_FORM_ACTION_URL') || 
+                                GOOGLE_FORM_EMAIL_FIELD.includes('YOUR_GOOGLE_FORM_EMAIL_FIELD');
+          
+          if (isPlaceholder) {
+            console.log('WKos Studio Demo: Використовуються плейсхолдери Google Forms. Імітація успішної відправки...');
+            setTimeout(() => {
+              submitBtn.classList.remove('is-loading');
+              subscribeForm.style.display = 'none';
+              successFeedback.classList.add('is-visible');
+            }, 1000);
+            return;
+          }
+          
+          // Створення FormData для відправки
+          const formData = new FormData();
+          formData.append(GOOGLE_FORM_EMAIL_FIELD, emailValue);
+          
+          // Асинхронний запит на Google Forms (no-cors дозволяє уникнути блокування CORS)
+          fetch(GOOGLE_FORM_ACTION_URL, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+          })
+          .then(() => {
+            submitBtn.classList.remove('is-loading');
+            subscribeForm.style.display = 'none';
+            successFeedback.classList.add('is-visible');
+          })
+          .catch((error) => {
+            console.error('Subscription error:', error);
+            submitBtn.classList.remove('is-loading');
+            submitBtn.disabled = false;
+            emailInput.disabled = false;
+            errorFeedback.textContent = 'Oops! Something went wrong. Please try again.';
+            errorFeedback.classList.add('is-visible');
+          });
+        });
+      }
     </script>
   </body>
 </html>
