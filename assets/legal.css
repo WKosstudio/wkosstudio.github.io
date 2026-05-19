@@ -242,15 +242,24 @@ footer.w-box a:focus-visible {
     align-items: center !important;
     flex-direction: row !important;
     justify-content: space-between !important;
-    padding: 0.6rem 1rem !important;
+    padding: 0.4rem 0.8rem !important;
     border-radius: 999px !important;
     top: 0.75rem !important;
-    min-height: auto !important;
+    min-height: 52px !important;
+    height: auto !important;
+  }
+
+  nav.w-box > a {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   nav.w-box img {
-    width: 2.2rem !important;
-    height: 2.2rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
 
   nav.w-box div.w-element {
@@ -259,11 +268,15 @@ footer.w-box a:focus-visible {
     justify-content: flex-end !important;
     gap: 0.1rem !important;
     width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   nav.w-box div.w-element a {
-    padding: 0.4rem 0.6rem !important;
-    font-size: 0.78rem !important;
+    padding: 0.35rem 0.55rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1 !important;
   }
 
   main.w-box > section.w-box {
