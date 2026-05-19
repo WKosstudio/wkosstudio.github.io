@@ -230,14 +230,16 @@
             <p class="eyebrow">Updates</p>
             <h2>No fake newsletter form. Just working links.</h2>
           </div>
-          <p>
-            Until there is a real mailing list backend, the cleanest way to stay
-            in touch is through social media or email. Static sites can be sharp
-            and honest at the same time.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="mailto:wkosstudio@gmail.com?subject=Hello%20WKos%20Studio">Email WKos Studio</a>
-            <a class="button button-secondary" href="https://www.youtube.com/@WKosStudio" target="_blank" rel="noopener noreferrer">Follow on YouTube</a>
+          <div class="updates-content">
+            <p>
+              Until there is a real mailing list backend, the cleanest way to stay
+              in touch is through social media or email. Static sites can be sharp
+              and honest at the same time.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:wkosstudio@gmail.com?subject=Hello%20WKos%20Studio">Email WKos Studio</a>
+              <a class="button button-secondary" href="https://www.youtube.com/@WKosStudio" target="_blank" rel="noopener noreferrer">Follow on YouTube</a>
+            </div>
           </div>
         </div>
       </section>
@@ -265,6 +267,7 @@
     </footer>
 
     <script>
+      // Reveal elements on scroll
       const revealElements = document.querySelectorAll("[data-reveal]");
 
       if ("IntersectionObserver" in window) {
@@ -277,7 +280,7 @@
               }
             });
           },
-          { threshold: 0.18 }
+          { threshold: 0.12 }
         );
 
         revealElements.forEach((element) => {
@@ -288,6 +291,38 @@
           element.classList.add("is-visible");
         });
       }
+
+      // Sticky header state on scroll
+      const header = document.querySelector(".site-header");
+      const handleScroll = () => {
+        if (window.scrollY > 15) {
+          header.classList.add("is-scrolled");
+        } else {
+          header.classList.remove("is-scrolled");
+        }
+      };
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+
+      // Interactive mouse glow (Mouse Halo) with smooth interpolation (inertia)
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let targetX = mouseX;
+      let targetY = mouseY;
+
+      document.addEventListener("mousemove", (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+      }, { passive: true });
+
+      const updateMouseGlow = () => {
+        mouseX += (targetX - mouseX) * 0.08;
+        mouseY += (targetY - mouseY) * 0.08;
+        document.documentElement.style.setProperty("--mouse-x", `${mouseX}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${mouseY}px`);
+        requestAnimationFrame(updateMouseGlow);
+      };
+      updateMouseGlow();
     </script>
   </body>
 </html>
