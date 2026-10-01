@@ -1,0 +1,685 @@
+/* ==========================================================================
+   Game page (Steam-style): /games/sort-that-cash/
+   Uses tokens + .button from site.css and stc.css.
+   ========================================================================== */
+
+.gp {
+  position: relative;
+  isolation: isolate;
+}
+
+.gp-bg {
+  position: absolute;
+  inset: calc(-1 * (var(--header-height) + 2rem)) 0 auto;
+  height: 900px;
+  z-index: -1;
+  background: url("sort-that-cash/page-bg.webp") center top / cover no-repeat;
+  opacity: 0.28;
+  -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.gp-shell {
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.gp-top {
+  padding-top: 2.5rem;
+}
+
+.gp-crumbs {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.gp-crumbs a:hover,
+.gp-crumbs a:focus-visible {
+  color: var(--accent-strong);
+}
+
+.gp-title {
+  max-width: none;
+  margin: 0.35rem 0 1.25rem;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.gp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(280px, 1fr);
+  gap: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  background: rgba(13, 15, 18, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ---------- Media viewer ------------------------------------------------- */
+
+.gp-media,
+.gp-side,
+.gp-about {
+  min-width: 0;
+}
+
+.gp-viewer {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.gp-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 350ms ease, visibility 0s 350ms;
+}
+
+.gp-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 350ms ease;
+}
+
+.gp-slide > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gp-shot {
+  cursor: zoom-in;
+}
+
+.gp-trailer iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.gp-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 214, 10, 0.92);
+  color: var(--ink);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 250ms var(--stc-ease), background 250ms;
+}
+
+.gp-play svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+  margin-left: 0.2rem;
+}
+
+.gp-play:hover,
+.gp-play:focus-visible {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--accent-strong);
+}
+
+.gp-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #e8e8e8;
+  font-size: 0.78rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.gp-trailer.is-playing .gp-play,
+.gp-trailer.is-playing .gp-hint,
+.gp-trailer.is-playing > img {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gp-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 2.6rem;
+  height: 3.6rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 200ms, background 200ms;
+}
+
+.gp-viewer:hover .gp-nav,
+.gp-nav:focus-visible {
+  opacity: 1;
+}
+
+.gp-nav:hover {
+  background: rgba(255, 214, 10, 0.85);
+  color: var(--ink);
+}
+
+.gp-prev { left: 0.6rem; }
+.gp-next { right: 0.6rem; }
+
+/* while the trailer plays, keep the arrows out of YouTube's controls */
+.gp-viewer.is-video-playing .gp-nav {
+  top: 40%;
+}
+
+/* ---------- Thumbnail strip --------------------------------------------- */
+
+.gp-strip-wrap {
+  margin-top: 0.75rem;
+}
+
+.gp-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 0.15rem;
+}
+
+.gp-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.gp-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 8.5rem;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 0.55rem;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 200ms, border-color 200ms;
+}
+
+.gp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gp-thumb:hover,
+.gp-thumb:focus-visible {
+  opacity: 0.95;
+}
+
+.gp-thumb.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.gp-thumb.is-video svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  fill: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.gp-scroll {
+  position: relative;
+  height: 6px;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.gp-scroll span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-width: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 214, 10, 0.55);
+}
+
+/* ---------- Side info ---------------------------------------------------- */
+
+.gp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.gp-capsule {
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+}
+
+.gp-short {
+  margin: 0;
+  color: #c9cbd0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.gp-facts {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.gp-facts div {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+}
+
+.gp-facts dt {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  align-self: center;
+}
+
+.gp-facts dd {
+  margin: 0;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.gp-tags-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.gp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: -0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gp-tags li {
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(255, 214, 10, 0.08);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ---------- Wishlist box ------------------------------------------------- */
+
+.gp-buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(255, 214, 10, 0.22);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 214, 10, 0.12), transparent 60%),
+    rgba(22, 24, 29, 0.85);
+}
+
+.gp-buy h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+.gp-buy p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.gp-buy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex: none;
+}
+
+.gp-buy-actions .button {
+  margin: 0;
+}
+
+/* ---------- About + sidebar --------------------------------------------- */
+
+.gp-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 2rem;
+  padding: 3rem 0 5rem;
+}
+
+.gp-section-title {
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gp-about {
+  max-width: 680px;
+}
+
+.gp-about h3 {
+  margin: 2rem 0 0.6rem;
+  color: var(--accent);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.gp-about h3:first-of-type {
+  margin-top: 0;
+}
+
+.gp-about p {
+  color: #cfd1d6;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+
+.gp-clip {
+  margin: 1.2rem 0 0.4rem;
+  max-width: 616px;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+.gp-clip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 616 / 346;
+}
+
+.gp-features {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #cfd1d6;
+  line-height: 1.65;
+}
+
+.gp-features li {
+  margin-bottom: 0.45rem;
+}
+
+.gp-features li::marker {
+  color: var(--accent);
+}
+
+.gp-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.gp-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.1rem;
+  background: rgba(22, 24, 29, 0.75);
+}
+
+.gp-card h4 {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  font-family: "Exo 2", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gp-card p {
+  margin: 0;
+  color: var(--text);
+}
+
+.gp-feat-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gp-feat-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.55rem;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.9rem;
+}
+
+.gp-feat-list li::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+  flex: none;
+}
+
+.gp-link {
+  display: block;
+  padding: 0.25rem 0;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.gp-link:hover,
+.gp-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ---------- Lightbox ----------------------------------------------------- */
+
+.gp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 3rem 4rem;
+  background: rgba(5, 6, 8, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.gp-lightbox[hidden] {
+  display: none;
+}
+
+.gp-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.6rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.gp-lightbox .gp-nav {
+  opacity: 1;
+}
+
+.gp-lb-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gp-lb-count {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  color: var(--muted);
+  font-size: 0.85rem;
+  transform: translateX(-50%);
+}
+
+/* ---------- Game links on cards ------------------------------------------ */
+
+.game-card .game-link {
+  color: inherit;
+}
+
+.game-card h3 .game-link:hover,
+.game-card h3 .game-link:focus-visible {
+  color: var(--accent-strong);
+}
+
+.game-card .game-more {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive --------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .gp-grid,
+  .gp-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gp-side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .gp-capsule {
+    grid-row: span 3;
+  }
+
+  .gp-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .gp-shell {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
+  .gp-top {
+    padding-top: 1.5rem;
+  }
+
+  .gp-grid {
+    padding: 0.6rem;
+    border-radius: 1.1rem;
+  }
+
+  .gp-side {
+    display: flex;
+  }
+
+  .gp-thumb {
+    width: 6.5rem;
+  }
+
+  .gp-nav {
+    opacity: 1;
+    width: 2.1rem;
+    height: 2.8rem;
+    font-size: 1.6rem;
+  }
+
+  .gp-play {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  .gp-hint {
+    display: none;
+  }
+
+  .gp-buy {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.2rem;
+  }
+
+  .gp-buy-actions {
+    flex-direction: column;
+  }
+
+  .gp-buy-actions .button {
+    width: 100%;
+  }
+
+  .gp-lightbox {
+    padding: 3.5rem 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gp-slide,
+  .gp-strip {
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
