@@ -105,8 +105,8 @@
 /* flying banknotes — positioned in % of the art (container query units) */
 .stc-bill {
   position: absolute;
-  left: 58%;
-  top: 30%;
+  left: var(--sx, 58%);
+  top: var(--sy, 30%);
   width: var(--w, 6%);
   opacity: 0;
   pointer-events: none;
@@ -598,7 +598,7 @@
     font-size: 0.78rem;
   }
 
-  .stc-bill:nth-child(n + 5) {
+  .stc-bill:nth-child(n + 11) {
     display: none;
   }
 }
