@@ -1,0 +1,640 @@
+/* ==========================================================================
+   Sort That Cash! — hero, facts strip, game cards, Games page.
+   Loaded after site.css; reuses its tokens (--bg, --accent, --muted …)
+   and its .button / .button-primary / .button-secondary.
+   ========================================================================== */
+
+:root {
+  --stc-hero-h: clamp(620px, 80svh, 780px);
+  --stc-art-ratio: 3.0968; /* Library Hero 3840 × 1240 */
+  --stc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Hero ---------------------------------------------------------- */
+
+.stc-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: var(--stc-hero-h);
+  padding-bottom: 3.5rem;
+  /* slide under the floating header pill */
+  margin-top: calc(-1 * (var(--header-height) + 1rem));
+  padding-top: calc(var(--header-height) + 1rem);
+  overflow: hidden;
+}
+
+.stc-stage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+/* Box with the art's own aspect ratio, "cover"-fitted and right-aligned,
+   so bills/glow can be positioned in % of the picture itself. */
+.stc-art {
+  --art-w: max(100%, calc(var(--stc-hero-h) * 0.82 * var(--stc-art-ratio)));
+  position: absolute;
+  bottom: 0;
+  /* keep the vault opening around 60% of the screen, the door on the right */
+  left: max(calc(100% - var(--art-w)), calc(60% - 0.615 * var(--art-w)));
+  width: var(--art-w);
+  aspect-ratio: 3840 / 1240;
+  container-type: size;
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+  transition: transform 1.2s var(--stc-ease);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 20%);
+}
+
+.stc-art-zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 62% 40%;
+  animation:
+    stc-zoom-in 2.4s var(--stc-ease) both,
+    stc-breathe 22s ease-in-out 2.4s infinite alternate;
+}
+
+.stc-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* warm light breathing out of the vault */
+.stc-glow {
+  position: absolute;
+  left: 50%;
+  top: -12%;
+  width: 26%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 196, 80, 0.55), rgba(255, 170, 40, 0.18) 55%, transparent);
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  opacity: 0.35;
+  animation: stc-glow 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* light sweep across the brass door */
+.stc-sheen {
+  position: absolute;
+  left: 76%;
+  top: 0;
+  width: 24%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.stc-sheen::before {
+  position: absolute;
+  inset: -20% auto -20% -60%;
+  width: 40%;
+  content: "";
+  background: linear-gradient(100deg, transparent, rgba(255, 240, 200, 0.55), transparent);
+  transform: skewX(-12deg);
+  animation: stc-sheen 9s ease-in-out 3s infinite;
+}
+
+/* flying banknotes — positioned in % of the art (container query units) */
+.stc-bill {
+  position: absolute;
+  left: 58%;
+  top: 30%;
+  width: var(--w, 6%);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: stc-fly var(--d, 9s) cubic-bezier(0.22, 0.6, 0.35, 1) var(--delay, 0s) infinite;
+}
+
+.stc-bill img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1.2cqh 1.4cqh rgba(0, 0, 0, 0.45));
+  animation: stc-flutter var(--f, 1.6s) ease-in-out infinite alternate;
+  transform-origin: 50% 40%;
+}
+
+.stc-bill:nth-child(odd) img {
+  animation-direction: alternate-reverse;
+}
+
+/* dark veil for text legibility */
+.stc-veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(13, 15, 18, 0.97) 0%, rgba(13, 15, 18, 0.88) 30%, rgba(13, 15, 18, 0.35) 55%, rgba(13, 15, 18, 0) 72%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(13, 15, 18, 0) 22%),
+    linear-gradient(180deg, rgba(13, 15, 18, 0.65) 0%, rgba(13, 15, 18, 0) 24%);
+}
+
+.stc-copy {
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.stc-copy-inner {
+  max-width: 600px;
+}
+
+.stc-copy .eyebrow {
+  margin-bottom: 1.1rem;
+}
+
+.stc-logo {
+  position: relative;
+  width: min(390px, 100%);
+  margin: 0 0 1rem -0.5rem;
+  /* the shine below is clipped to the logo's own shape */
+  -webkit-mask: url("sort-that-cash/logo-640.webp") center / contain no-repeat;
+  mask: url("sort-that-cash/logo-640.webp") center / contain no-repeat;
+}
+
+.stc-logo img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.45));
+}
+
+.stc-logo::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%);
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  mix-blend-mode: soft-light;
+  animation: stc-logo-shine 6s ease-in-out 2.2s infinite;
+  pointer-events: none;
+}
+
+.stc-tagline {
+  max-width: 18ch;
+  margin-bottom: 0.9rem;
+  color: var(--text);
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.stc-lead {
+  max-width: 52ch;
+  margin-bottom: 1.6rem;
+  color: #c9cbd0;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+}
+
+.stc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.stc-actions .button {
+  margin: 0;
+}
+
+.stc-meta {
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* primary CTA: periodic shine */
+.button-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shine::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.65) 48%, transparent 66%);
+  transform: translateX(-120%);
+  animation: stc-btn-shine 5s ease-in-out 3.2s infinite;
+  pointer-events: none;
+}
+
+/* staged entrance */
+.stc-in {
+  opacity: 0;
+  transform: translateY(1.4rem);
+  animation: stc-rise 1s var(--stc-ease) both;
+  animation-delay: calc(0.25s + var(--i, 0) * 0.12s);
+}
+
+.stc-logo.stc-in {
+  transform: translateY(1rem) scale(0.86) rotate(-2deg);
+  animation-name: stc-pop;
+  animation-duration: 1.1s;
+}
+
+/* ---------- Facts strip -------------------------------------------------- */
+
+.stc-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  background: rgba(20, 23, 27, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.stc-fact {
+  padding: 1.4rem 1.5rem;
+}
+
+.stc-fact + .stc-fact {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stc-fact strong {
+  display: block;
+  color: var(--accent);
+  font-family: "Exo 2", sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stc-fact > span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- Game cards --------------------------------------------------- */
+
+.games-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.games-intro h2 {
+  margin-bottom: 0.35rem;
+}
+
+.games-intro p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.text-link {
+  color: var(--accent-strong);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.game-grid.is-list {
+  grid-template-columns: 1fr;
+}
+
+.game-card {
+  display: grid;
+  grid-template-columns: clamp(130px, 34%, 200px) minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  background: rgba(22, 24, 29, 0.75);
+  transition: border-color 300ms ease, transform 300ms var(--stc-ease), box-shadow 300ms ease;
+}
+
+.game-card:hover {
+  border-color: rgba(255, 214, 10, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.game-cover {
+  aspect-ratio: 2 / 3;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #121419;
+}
+
+.game-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--stc-ease);
+}
+
+.game-card:hover .game-cover img {
+  transform: scale(1.04);
+}
+
+.game-card h3 {
+  margin-bottom: 0.45rem;
+}
+
+.game-card p {
+  margin-bottom: 0.9rem;
+  color: #c3c5ca;
+  font-size: 0.95rem;
+}
+
+.game-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.game-tag {
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.game-tag.is-accent {
+  color: var(--accent-strong);
+}
+
+.game-card .button {
+  margin: 0;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.25rem;
+  min-width: 13.5rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Games page --------------------------------------------------- */
+
+.page-intro {
+  padding-bottom: 3rem;
+}
+
+.page-intro h1 {
+  margin-bottom: 0.6rem;
+}
+
+.page-intro p {
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+/* ---------- Keyframes ---------------------------------------------------- */
+
+@keyframes stc-zoom-in {
+  from { transform: scale(1.12); filter: brightness(0.55); }
+  to { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes stc-breathe {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes stc-glow {
+  0%, 100% { opacity: 0.28; transform: scale(0.96); }
+  50% { opacity: 0.6; transform: scale(1.04); }
+}
+
+@keyframes stc-sheen {
+  0%, 70% { transform: translateX(0) skewX(-12deg); }
+  100% { transform: translateX(420%) skewX(-12deg); }
+}
+
+@keyframes stc-fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(var(--r0, 0deg)) scale(0.35);
+  }
+  10% { opacity: 1; }
+  80% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--dx) * 1cqw), calc(var(--dy) * 1cqh)) rotate(var(--r1, 180deg)) scale(1);
+  }
+}
+
+@keyframes stc-flutter {
+  from { transform: perspective(600px) rotateX(-35deg) rotateY(-20deg); }
+  to { transform: perspective(600px) rotateX(40deg) rotateY(25deg); }
+}
+
+@keyframes stc-rise {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes stc-pop {
+  0% { opacity: 0; transform: translateY(1rem) scale(0.86) rotate(-2deg); }
+  60% { opacity: 1; transform: translateY(0) scale(1.03) rotate(0.5deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes stc-logo-shine {
+  0%, 55% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+@keyframes stc-btn-shine {
+  0%, 70% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* ---------- Responsive --------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .stc-veil {
+    background:
+      linear-gradient(90deg, rgba(13, 15, 18, 0.97) 0%, rgba(13, 15, 18, 0.9) 40%, rgba(13, 15, 18, 0.45) 68%, rgba(13, 15, 18, 0.1) 100%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(13, 15, 18, 0) 22%);
+  }
+}
+
+@media (max-width: 900px) {
+  .stc-hero {
+    margin-top: -9.5rem;
+    padding-top: 10.75rem;
+  }
+
+  .stc-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stc-fact:nth-child(3) {
+    border-left: 0;
+  }
+
+  .stc-fact:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  /* stacked: copy on top, the vault as a band underneath */
+  .stc-hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-bottom: 0;
+    margin-top: -5rem;
+    padding-top: 6.5rem;
+  }
+
+  .stc-stage {
+    position: relative;
+    inset: auto;
+    order: 2;
+    height: 62vw;
+    margin-top: -1.5rem;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  }
+
+  .stc-art {
+    --art-w: 205%;
+    left: -76%;
+    top: 0;
+    bottom: auto;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .stc-veil {
+    display: none;
+  }
+
+  .stc-copy {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
+  .stc-logo {
+    width: min(330px, 92%);
+    margin-left: -0.35rem;
+  }
+
+  .stc-actions {
+    flex-direction: column;
+  }
+
+  .stc-actions .button {
+    width: 100%;
+  }
+
+  .stc-facts {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
+  .stc-fact {
+    padding: 1rem 1.1rem;
+  }
+
+  .games-intro {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .game-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 1.2rem;
+  }
+
+  .game-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .game-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.7rem;
+    font-size: 0.86rem;
+  }
+
+  .game-card .game-tags {
+    display: none;
+  }
+
+  .game-card .button {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.78rem;
+  }
+
+  .stc-bill:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stc-bill,
+  .stc-sheen,
+  .stc-logo::after,
+  .button-shine::after {
+    display: none;
+  }
+
+  .stc-art-zoom,
+  .stc-glow,
+  .stc-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .stc-art {
+    transition: none;
+  }
+}
+
+/* h1 wrapper for the logo: neutralise site.css h1 sizing */
+h1.stc-logo {
+  max-width: none;
+  font-size: 1rem;
+  line-height: 0;
+  text-shadow: none;
+}
+
+.dice-title {
+  max-width: 13ch;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  font-size: clamp(2.7rem, 5vw, 4.35rem);
+}
