@@ -541,8 +541,8 @@
   }
 
   .stc-logo {
-    width: min(330px, 92%);
-    margin-left: -0.35rem;
+    width: min(360px, 94%);
+    margin: 0 auto 1rem;
   }
 
   .stc-actions {
