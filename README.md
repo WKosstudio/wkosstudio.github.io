@@ -53,6 +53,10 @@ the stacked/wide Onest B v003 logos from `Marketing/Branding/Exports/Logo_v003/`
 The website uses separate artwork/logo layers with the approved v008 placement:
 portrait logo 58% wide, left 21%, top 4%; landscape logo 42% wide, left/top 6%.
 
+Contact-button correction: document text-link styling must exclude `.button`.
+Primary buttons keep dark `--ink` text on yellow in normal, hover and focus
+states; check the email CTA visually as well as checking its mailto address.
+
 Launch data disclosures and unresolved configuration checks are tracked in
 [the Car Hero Data safety handoff](docs/carhero-data-safety.md). This is an audit
 draft for Console coordination; it is not a submitted release declaration.

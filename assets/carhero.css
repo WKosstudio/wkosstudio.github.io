@@ -27,7 +27,7 @@
 .ch-gallery a { scroll-snap-align: start; border-radius: 1rem; }
 .ch-gallery img { display: block; width: 100%; height: auto; border-radius: 1rem; }
 .ch-links { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-top: 1rem; }
-.ch-links a, .ch-document a, .ch-languages a { color: #ffe45b; text-decoration: underline; text-underline-offset: .22em; }
+.ch-links a:not(.button), .ch-document a:not(.button), .ch-languages a:not(.button) { color: #ffe45b; text-decoration: underline; text-underline-offset: .22em; }
 .ch-document { width: min(100% - 2rem, 820px); margin: auto; padding: 3rem 0; }
 .ch-document h1 { font-size: clamp(2rem, 5vw, 3.2rem); max-width: none; margin: 1rem 0; }
 .ch-document h2 { font-size: 1.5rem; line-height: 1.2; margin: 2.3rem 0 1rem; }
