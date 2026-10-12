@@ -43,6 +43,16 @@ first, **Car Hero Survivor IO** second, and released **Dice Imprint Quest
 Puzzle** third. Use this order on the home page and in the game catalogue.
 Use the existing site's game cards, fonts and navigation for presentation.
 
+Owner-confirmed cover placement: use the approved vertical marketing cover
+with the approved game-name logo for the home/catalogue links, and the approved
+horizontal cover on the game page. Gameplay screenshots belong in the gallery,
+not in the main cover slot. Preserve both compositions and readable branding.
+Sources: `Marketing/VerticalVideos/Covers/Working/Shorts_B2_Breakout_v001.png`
+and `Marketing/YouTube/Trailer/Cover/Working/Cover_B2_Breakout_v002.png`, with
+the stacked/wide Onest B v003 logos from `Marketing/Branding/Exports/Logo_v003/`.
+The website uses separate artwork/logo layers with the approved v008 placement:
+portrait logo 58% wide, left 21%, top 4%; landscape logo 42% wide, left/top 6%.
+
 Launch data disclosures and unresolved configuration checks are tracked in
 [the Car Hero Data safety handoff](docs/carhero-data-safety.md). This is an audit
 draft for Console coordination; it is not a submitted release declaration.

@@ -3,7 +3,9 @@
 .ch-hero { padding: 3rem 0 2rem; }
 .ch-crumbs, .ch-languages { display: flex; gap: 1rem; flex-wrap: wrap; color: #c4c4bd; font-size: .85rem; }
 .ch-crumbs { margin-bottom: 1.5rem; }
-.ch-banner { display: block; width: 100%; height: auto; border: 1px solid #393426; border-radius: 1.2rem; }
+.ch-banner { position: relative; width: 100%; border: 1px solid #393426; border-radius: 1.2rem; overflow: hidden; }
+.ch-banner-art { display: block; width: 100%; height: auto; }
+.ch-banner-logo { position: absolute; left: 6%; top: 6%; width: 42%; height: auto; }
 .ch-intro { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; padding-top: 2rem; align-items: start; }
 .ch-title { display: flex; gap: 1rem; align-items: center; margin: 1.4rem 0; }
 .ch-title img { width: 76px; height: 76px; border-radius: 18px; flex-shrink: 0; }
