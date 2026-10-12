@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wkosstudio.github.io/sitemap.xml

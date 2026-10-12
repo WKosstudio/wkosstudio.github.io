@@ -1,0 +1,55 @@
+/* Car Hero pages share the site's fonts, colours and navigation. */
+.ch-shell { width: min(100% - 2rem, 1160px); margin: auto; }
+.ch-hero { padding: 3rem 0 2rem; }
+.ch-crumbs, .ch-languages { display: flex; gap: 1rem; flex-wrap: wrap; color: #c4c4bd; font-size: .85rem; }
+.ch-crumbs { margin-bottom: 1.5rem; }
+.ch-banner { display: block; width: 100%; height: auto; border: 1px solid #393426; border-radius: 1.2rem; }
+.ch-intro { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; padding-top: 2rem; align-items: start; }
+.ch-title { display: flex; gap: 1rem; align-items: center; margin: 1.4rem 0; }
+.ch-title img { width: 76px; height: 76px; border-radius: 18px; flex-shrink: 0; }
+.ch-title h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 0; max-width: 15ch; }
+.ch-lead { font-size: 1.1rem; color: #d3d3cb; max-width: 60ch; }
+.ch-panel { background: #1b1c18; border: 1px solid #514a32; border-radius: 1.2rem; padding: 1.7rem; }
+.ch-panel h2 { font-size: 1.65rem; }
+.ch-panel p, .ch-note { color: #c4c4bd; font-size: .9rem; }
+.ch-panel .button { width: 100%; text-align: center; margin-bottom: .6rem; }
+.ch-status { display: inline-block; color: #ffd60a; font-weight: 800; font-size: .8rem; text-transform: uppercase; letter-spacing: .09em; margin-bottom: .7rem; }
+.ch-section { padding: 3rem 0; border-top: 1px solid #303027; }
+.ch-section h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.ch-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ch-feature { border: 1px solid #36362b; background: #171914; border-radius: 1rem; padding: 1.5rem; }
+.ch-feature h3 { font-size: 1.35rem; line-height: 1.2; }
+.ch-feature p { color: #c4c4bd; margin-bottom: 0; }
+.ch-feature .ch-number { color: #ffd60a; font-family: 'Exo 2', sans-serif; font-size: 1.1rem; display: block; margin-bottom: 1.5rem; }
+.ch-gallery { display: grid; grid-template-columns: repeat(7, minmax(220px, 1fr)); gap: 1rem; overflow-x: auto; padding: .4rem .2rem 1.2rem; scroll-snap-type: x mandatory; }
+.ch-gallery a { scroll-snap-align: start; border-radius: 1rem; }
+.ch-gallery img { display: block; width: 100%; height: auto; border-radius: 1rem; }
+.ch-links { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-top: 1rem; }
+.ch-links a, .ch-document a, .ch-languages a { color: #ffe45b; text-decoration: underline; text-underline-offset: .22em; }
+.ch-document { width: min(100% - 2rem, 820px); margin: auto; padding: 3rem 0; }
+.ch-document h1 { font-size: clamp(2rem, 5vw, 3.2rem); max-width: none; margin: 1rem 0; }
+.ch-document h2 { font-size: 1.5rem; line-height: 1.2; margin: 2.3rem 0 1rem; }
+.ch-document p, .ch-document li { color: #d2d3cb; }
+.ch-document .ch-panel p:last-child { margin-bottom: 0; }
+.ch-table-wrap { overflow-x: auto; }
+.ch-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.ch-table th, .ch-table td { padding: 1rem; border: 1px solid #48483b; text-align: left; vertical-align: top; }
+.ch-table th { color: #ffe45b; background: #20221b; }
+.ch-table td { color: #d2d3cb; }
+.ch-footer { padding: 2rem 0; border-top: 1px solid #36362b; font-size: .9rem; color: #c4c4bd; }
+.ch-footer p { margin: 1rem 0 0; }
+.ch-page :focus-visible { outline: 3px solid #ffe45b; outline-offset: 5px; }
+.ch-page .site-header { position: relative; top: auto; }
+.ch-page .site-nav a { color: #c4c4bd; }
+@media (max-width: 760px) {
+  .ch-intro, .ch-features { grid-template-columns: 1fr; }
+  .ch-hero, .ch-document { padding-top: 2rem; }
+  .ch-intro { gap: 1rem; }
+  .ch-section { padding: 2.2rem 0; }
+  .ch-title img { width: 64px; height: 64px; }
+  .ch-panel { padding: 1.3rem; }
+  .ch-gallery { grid-template-columns: repeat(7, minmax(245px, 1fr)); }
+  .ch-page .site-nav { flex-wrap: wrap; }
+  .ch-page .site-nav a { padding: .4rem .5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ch-page { scroll-behavior: auto; } }

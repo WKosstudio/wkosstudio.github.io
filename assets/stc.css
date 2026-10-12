@@ -638,3 +638,10 @@ h1.stc-logo {
   color: var(--accent);
   font-size: clamp(2.7rem, 5vw, 4.35rem);
 }
+
+/* Long catalogue links must wrap inside narrow mobile card columns. */
+.game-card .game-more { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  /* Keep the Dice preview's decorative halo inside the mobile viewport. */
+  body[data-page="games"] .hero-visual { overflow: clip; }
+}
