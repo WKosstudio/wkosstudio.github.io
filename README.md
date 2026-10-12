@@ -43,6 +43,10 @@ first, **Car Hero Survivor IO** second, and released **Dice Imprint Quest
 Puzzle** third. Use this order on the home page and in the game catalogue.
 Use the existing site's game cards, fonts and navigation for presentation.
 
+Launch data disclosures and unresolved configuration checks are tracked in
+[the Car Hero Data safety handoff](docs/carhero-data-safety.md). This is an audit
+draft for Console coordination; it is not a submitted release declaration.
+
 ## Release facts to check before changing public claims
 
 As of October 12, 2026, the game is unreleased. The store destination is
