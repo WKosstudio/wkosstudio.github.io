@@ -38,6 +38,11 @@ are preserved in web formats under `assets/carhero/`. Full screenshots use WebP;
 
 Public studio brand: **WKos**. Support: **wkos.studio@gmail.com**.
 
+Owner-confirmed game order (October 12, 2026): **Sort That Cash!** (Steam)
+first, **Car Hero Survivor IO** second, and released **Dice Imprint Quest
+Puzzle** third. Use this order on the home page and in the game catalogue.
+Use the existing site's game cards, fonts and navigation for presentation.
+
 ## Release facts to check before changing public claims
 
 As of October 12, 2026, the game is unreleased. The store destination is
