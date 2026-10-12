@@ -645,3 +645,6 @@ h1.stc-logo {
   /* Keep the Dice preview's decorative halo inside the mobile viewport. */
   body[data-page="games"] .hero-visual { overflow: clip; }
 }
+
+/* Preserve the approved portrait screenshot and its caption in game cards. */
+.game-cover img.carhero-card-image { object-fit: contain; transform: none; }
