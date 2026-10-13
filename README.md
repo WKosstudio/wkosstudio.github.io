@@ -63,11 +63,12 @@ draft for Console coordination; it is not a submitted release declaration.
 
 ## Release facts to check before changing public claims
 
-As of October 12, 2026, the game is unreleased. The store destination is
+On October 13, 2026, the owner confirmed that Google Play pre-registration is
+open. The game is still unreleased. The store destination is
 `https://play.google.com/store/apps/details?id=com.wkos.car.hero.survivor.io`.
-The website says pre-registration is being prepared until the public campaign
-is confirmed. Do not use a download badge or announce a live campaign based
-only on a Console draft. No fixed date or pre-registration reward is promised.
+Use a pre-registration CTA and keep regional availability subject to Google
+Play. Do not use a download badge before release. No fixed date or
+pre-registration reward is promised.
 
 The owner approved planned Google AdMob ads, Firebase Analytics and in-app
 purchases in this website chat. The coordinated launch decisions also include
