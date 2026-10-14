@@ -338,6 +338,8 @@
 }
 
 .game-cover {
+  display: block;
+  width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: 1rem;
   overflow: hidden;
@@ -345,10 +347,16 @@
 }
 
 .game-cover img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 600ms var(--stc-ease);
+}
+
+.game-cover:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .game-card:hover .game-cover img {
@@ -587,7 +595,7 @@
   }
 
   .game-card .game-tags {
-    display: none;
+    margin-bottom: 0.7rem;
   }
 
   .game-card .button {
@@ -641,13 +649,11 @@ h1.stc-logo {
 
 /* Long catalogue links must wrap inside narrow mobile card columns. */
 .game-card .game-more { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
-@media (max-width: 640px) {
-  /* Keep the Dice preview's decorative halo inside the mobile viewport. */
-  body[data-page="games"] .hero-visual { overflow: clip; }
-}
+/* Keep the Dice preview's decorative halo and tiles inside its column. */
+body[data-page="games"] .hero-visual { overflow: clip; }
 
-/* Approved portrait artwork and stacked logo, in their authored composition. */
-.game-cover.carhero-cover { position: relative; aspect-ratio: 941 / 1672; background: #15130c; }
+/* Shared 2:3 capsule with the approved stacked Car Hero logo. */
+.game-cover.carhero-cover { position: relative; background: #15130c; }
 .game-cover.carhero-cover .carhero-card-art { display: block; width: 100%; height: 100%; object-fit: contain; transform: none; }
 .game-cover.carhero-cover .carhero-card-logo { position: absolute; left: 21%; top: 4%; width: 58%; height: auto; object-fit: contain; transform: none; }
 .game-card:hover .game-cover.carhero-cover img { transform: none; }

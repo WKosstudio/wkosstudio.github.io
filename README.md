@@ -43,14 +43,44 @@ first, **Car Hero Survivor IO** second, and released **Dice Imprint Quest
 Puzzle** third. Use this order on the home page and in the game catalogue.
 Use the existing site's game cards, fonts and navigation for presentation.
 
-Owner-confirmed cover placement: use the approved vertical marketing cover
-with the approved game-name logo for the home/catalogue links, and the approved
-horizontal cover on the game page. Gameplay screenshots belong in the gallery,
-not in the main cover slot. Preserve both compositions and readable branding.
+Owner-confirmed catalogue presentation (October 14, 2026): every game card
+uses a 2:3 cover (600 × 900 px, matching the Steam capsule). Covers and titles
+link to the game's page; Dice Imprint currently links to `/games/#dice-imprint`.
+Use the same `More info…` link, platform-only tag and store-button order on
+every card on both home and Games. Remove release/development status tags.
+Car Hero's card uses `Get it on Google Play` and the existing pre-registration
+store URL. This latest card instruction supersedes the older CTA guidance
+below; the game's detailed page can still explain pre-registration.
+Dice Imprint's cover should have readable game-name branding and cozy pastel
+puzzle artwork. Owner correction: preserve the original reference puzzle's
+tile geometry, dice-face marks, pip counts and imprint sizes exactly. Do not
+invent enlarged imprints or random pip patterns. Add the title plaque and
+background decoration; the floating islands and vegetation are approved.
+Car Hero keeps its established yellow-car/desert identity
+and approved logo, recomposed to fit the shared capsule ratio.
+
+The Car Hero capsule and Dice decoration layer were generated with the built-in
+`image_gen` tool. Final covers are 600 × 900 WebP: `assets/carhero/capsule-vertical.webp` and
+`assets/dice-imprint/capsule-vertical.webp`. The original Car Hero portrait
+and landscape art remain available for the detailed game page. Generation
+prompts and references are recorded in `docs/game-card-covers.json`.
+The Dice Imprint detail section on `/games/#dice-imprint` also uses this
+generated capsule as its main cover, including the mobile preview. Do not
+leave the old phone screenshot in that main artwork slot.
+Dice's final cover is a native composition of the original screenshot and
+`assets/dice-imprint/cover-decoration.webp`. The title is confined to y=2–192
+and the decorative islands to y=720–900 on the 600 × 900 canvas. The entire
+original game field in y=192–720 is preserved pixel-for-pixel; final Dice
+encoding uses lossless WebP. Never substitute the rejected redrawn puzzle.
+
+Owner-confirmed cover placement: home/catalogue links use the new 2:3 capsule
+with the approved game-name logo; the game page keeps the approved horizontal
+cover. Gameplay screenshots belong in the gallery, not in the main cover slot.
+Preserve the detailed page's composition and readable branding.
 Sources: `Marketing/VerticalVideos/Covers/Working/Shorts_B2_Breakout_v001.png`
 and `Marketing/YouTube/Trailer/Cover/Working/Cover_B2_Breakout_v002.png`, with
 the stacked/wide Onest B v003 logos from `Marketing/Branding/Exports/Logo_v003/`.
-The website uses separate artwork/logo layers with the approved v008 placement:
+The website uses separate artwork/logo layers with the approved placement:
 portrait logo 58% wide, left 21%, top 4%; landscape logo 42% wide, left/top 6%.
 
 Contact-button correction: document text-link styling must exclude `.button`.

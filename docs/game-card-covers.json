@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-14",
+  "tool": "built-in image_gen",
+  "webOutput": {
+    "width": 600,
+    "height": 900,
+    "format": "webp",
+    "quality": 88
+  },
+  "covers": [
+    {
+      "output": "assets/dice-imprint/capsule-vertical.webp",
+      "reference": "assets/dice-imprint-vertical.webp",
+      "initialRejectedPrompt": "Use case: stylized-concept. Asset type: final branded portrait 2:3 game capsule for a website, 1024x1536. Reference image: existing Dice Imprint gameplay, preserve the game's identity of an isometric floating tile puzzle and a multicolored dice with pips. Create a polished cozy pastel 3D low-poly illustrated cover, in soft mint, sage, cream, dusty peach and powder blue. Floating stepped puzzle board, colored tile paths and a large readable multicolored dice in the lower two-thirds; soft cloudy background and gentle lighting. Top third: a prominent professionally designed rounded cream title plaque with dark sage readable playful lettering, exact title on three lines: 'DICE' / 'IMPRINT' / 'QUEST PUZZLE'. Make IMPRINT nearly as large as DICE, subtitle smaller. The artwork must feel like a complete commercial game cover, visually clear at 180px wide. Title and main dice inside 7% safe margins. Do not simply paste a screenshot; improve the artwork, retain dice/color imprint logic. No extra slogans, labels, store badges, characters or watermarks. Full bleed image, no outer border, no rounded image corners.",
+      "composition": {
+        "source": "assets/dice-imprint-vertical.webp",
+        "decorations": "assets/dice-imprint/cover-decoration.webp",
+        "title": {
+          "left": 70,
+          "top": 2,
+          "width": 460,
+          "clipHeight": 190,
+          "imageHeight": 690
+        },
+        "islands": {
+          "left": 0,
+          "top": 720,
+          "width": 600,
+          "clipHeight": 180,
+          "imageTop": -720,
+          "imageHeight": 900
+        },
+        "verifiedUnmodifiedRegion": {
+          "x": 0,
+          "y": 192,
+          "width": 600,
+          "height": 528,
+          "changedChannels": 0
+        },
+        "encoding": "lossless WebP"
+      },
+      "decorationPromptFile": "docs/dice-cover-decoration-prompt.txt",
+      "initialRejectedPromptStatus": "Historical record only. This redrawn puzzle is not used in the final cover."
+    },
+    {
+      "output": "assets/carhero/capsule-vertical.webp",
+      "reference": "assets/carhero/cover-portrait.webp",
+      "logoOverlay": "assets/carhero/logo-stack.png",
+      "prompt": "Use case: compositing. Asset type: portrait game capsule artwork, exactly 2:3 portrait 1024x1536. Edit the supplied cover into a shorter 2:3 Steam-style capsule by carefully recomposing the scene, retaining its established clean angular low-poly art style, colors and identity. Keep the same large yellow sports car with twin dark stripes, round headlights and roof-mounted automatic turret as main hero; same yellow twin rotor drone, dark pursuing cars, warm sandy desert, rock formations, dust and action. Main yellow car fully visible in middle/lower half; pursuers distributed lower corners and upper right, drone near hero. Top 24% must be relatively quiet blue sky and distant dunes, reserved for the existing game logo that will be separately overlaid on website. No generated text or logo. Preserve the car model, weapon, drone and desert style closely. Complete full-bleed polished composition without black bars, borders or rounded corners. Must read clearly at 180px wide; retain crisp low-poly facets rather than realistic textures."
+    }
+  ]
+}
