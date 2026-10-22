@@ -1,0 +1,545 @@
+{
+  "researched_on": "2026-10-22",
+  "site": "https://wkosstudio.github.io/",
+  "scope": "Website SEO implemented from a shared genre/ASO semantic core. Store listings were researched but not edited.",
+  "methodology": "Observed vocabulary from official store pages + verified WKos mechanics + owner-authorized query hypotheses. Exact phrasing, demand, reach and priorities remain editorial estimates, not keyword-tool measurements. English is the main discovery market assumption; Ukrainian targets the existing Car Hero localization.",
+  "priority_legend": {
+    "P1": "Primary relevant intent: landing-page metadata and introduction.",
+    "P2": "Supporting intent: natural gameplay explanations and questions.",
+    "P3": "Research reserve: requires a separate localization or page."
+  },
+  "estimated_reach_legend": {
+    "broader": "Hypothesis: wider genre audience; likely more varied intent.",
+    "medium": "Hypothesis: combined genre + mechanic/platform intent.",
+    "niche": "Hypothesis: narrow mechanic or brand intent; useful even with low volume."
+  },
+  "measurement": {
+    "monthly_search_volume": null,
+    "difficulty": null,
+    "search_console_baseline": null,
+    "note": "No measured figures available. No promised ranking or traffic increase."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Librarian — Steam",
+      "url": "https://store.steampowered.com/app/4197610/",
+      "signal": "First-person organization, shelves, visible progress, efficiency upgrades."
+    },
+    {
+      "id": "S2",
+      "name": "Sort Them Ducks — Steam",
+      "url": "https://store.steampowered.com/app/4992070/",
+      "signal": "Sorting and organizing simulator, matching categories, filling shelves, relaxing play."
+    },
+    {
+      "id": "S3",
+      "name": "Cellar Keeper — Steam",
+      "url": "https://store.steampowered.com/app/4935510/",
+      "signal": "Organization simulator, sorting varieties, racks, permanent efficiency improvements."
+    },
+    {
+      "id": "S4",
+      "name": "Car Hero Survivor IO — Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.wkos.car.hero.survivor.io",
+      "signal": "Current listing fetched on 2026-10-22. Auto combat, roguelite car shooter, top-down view, waves, permanent upgrades. Regular-sector bosses use a timer; nodes are introduced in the tutorial. Anonymous US response did not expose a reliable installation/pre-registration button, so release status retains the last owner-confirmed pre-registration state."
+    },
+    {
+      "id": "S5",
+      "name": "Driveloop: Survivors — Steam",
+      "url": "https://store.steampowered.com/app/3183730/",
+      "signal": "Driving roguelike shooter, vehicle upgrades, enemy waves; tags include Roguelite, Top-Down Shooter and Vehicular Combat."
+    },
+    {
+      "id": "S6",
+      "name": "Car VS Zombies: Road Kill — Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.carvszombies.roadkill.game",
+      "signal": "Adjacent mobile genre uses top-down, roguelike, car shooting and survival language. Zombie theme is excluded from Car Hero positioning."
+    },
+    {
+      "id": "S7",
+      "name": "Money Sort — Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.loop.moneysort",
+      "signal": "Money-sorting searches also lead to mobile board puzzles. Use PC, first-person and simulator qualifiers to distinguish Sort That Cash!."
+    },
+    {
+      "id": "S8",
+      "name": "Google Search — title links",
+      "url": "https://developers.google.com/search/docs/appearance/title-link",
+      "signal": "Concise, descriptive page titles; no repeated keyword lists."
+    },
+    {
+      "id": "S9",
+      "name": "Google Search — snippets",
+      "url": "https://developers.google.com/search/docs/appearance/snippet",
+      "signal": "Unique useful descriptions; Google may generate a different snippet."
+    },
+    {
+      "id": "S10",
+      "name": "Google Search — meta tags",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/special-tags",
+      "signal": "Meta keywords do not affect Google indexing or ranking."
+    },
+    {
+      "id": "S11",
+      "name": "Google Play — store listing fields",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9859152",
+      "signal": "App name 30 characters, short description 80, full description 4000. Website edits do not update these fields."
+    },
+    {
+      "id": "S12",
+      "name": "Steamworks — tags",
+      "url": "https://partner.steamgames.com/doc/store/tags",
+      "signal": "Steam tags describe genre, mechanics and audience; website terms do not automatically become Steam tags."
+    }
+  ],
+  "clusters": [
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Cash sorting simulator",
+      "priority": "P1",
+      "estimated_reach": "niche",
+      "terms": [
+        "money sorting simulator",
+        "cash sorting simulator",
+        "banknote sorting game",
+        "cash sorting game",
+        "money sorting game PC"
+      ],
+      "intent": "Find a PC game whose main task is sorting money.",
+      "placement": "Game title, description, short introduction, about section and gameplay question.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S7"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Organizing and shelves",
+      "priority": "P1",
+      "estimated_reach": "broader",
+      "terms": [
+        "organizing game",
+        "organizing simulator",
+        "sorting simulator",
+        "shelf sorting game",
+        "shelf organizing game",
+        "first person sorting game"
+      ],
+      "intent": "Find games about categorizing objects and filling the correct shelves.",
+      "placement": "Game introduction, about section, platform paragraph and existing genre tags.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Relaxing and satisfying",
+      "priority": "P2",
+      "estimated_reach": "broader",
+      "terms": [
+        "relaxing sorting game",
+        "satisfying sorting game",
+        "relaxing organizing game",
+        "cozy organizing game",
+        "satisfying money game"
+      ],
+      "intent": "Look for satisfying visible progress and play at a chosen pace.",
+      "placement": "About section, at-your-own-pace paragraph and existing Relaxing tag. Cozy is a research variant, not a required exact-match label.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Mechanic-led long tails",
+      "priority": "P2",
+      "estimated_reach": "niche",
+      "terms": [
+        "game where you sort money",
+        "game about organizing money",
+        "sort banknotes into bundles",
+        "stacking cash game",
+        "bank vault organizing game",
+        "sorting money onto shelves"
+      ],
+      "intent": "Describe remembered gameplay rather than a genre name.",
+      "placement": "Visible description of sorting, strapping 100 notes, storing bundles and organizing the vault. Covers intent without repeating each phrase.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S7"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Equipment and progression",
+      "priority": "P2",
+      "estimated_reach": "niche",
+      "terms": [
+        "cash sorting machine game",
+        "money sorting game with upgrades",
+        "sorting simulator with machines",
+        "banknote bundling game"
+      ],
+      "intent": "Find sorting with equipment upgrades and automation.",
+      "placement": "Upgrade your cash sorting machines heading and existing equipment paragraphs.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "en",
+      "cluster": "Platform and brand",
+      "priority": "P1",
+      "estimated_reach": "niche",
+      "terms": [
+        "Sort That Cash",
+        "Sort That Cash game",
+        "Sort That Cash Steam",
+        "money sorting simulator PC",
+        "sorting game macOS",
+        "single player organizing game"
+      ],
+      "intent": "Find the official game and verify platform or store availability.",
+      "placement": "H1, platform question, game schema, catalogue cards and update CTA. Steam page explicitly described as not public.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Sort That Cash!",
+      "locale": "uk",
+      "cluster": "Ukrainian expansion",
+      "priority": "P3",
+      "estimated_reach": "niche",
+      "terms": [
+        "симулятор сортування грошей",
+        "гра про сортування грошей",
+        "гра де сортуєш гроші",
+        "гра про наведення порядку",
+        "сортування предметів на полицях",
+        "затишна гра на ПК"
+      ],
+      "intent": "Ukrainian discovery queries for sorting and organizing games.",
+      "placement": "Research reserve for a future complete Ukrainian page; no Ukrainian keyword block inserted into the English page.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "reserve"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "en",
+      "cluster": "Car survival",
+      "priority": "P1",
+      "estimated_reach": "medium",
+      "terms": [
+        "car survival game",
+        "car survival game Android",
+        "car survival shooter",
+        "vehicle survival game",
+        "survivor game with cars"
+      ],
+      "intent": "Find survival action controlled through a combat vehicle.",
+      "placement": "Game title, description, lead, about paragraph and catalogue cards.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "en",
+      "cluster": "Roguelite shooter",
+      "priority": "P1",
+      "estimated_reach": "medium",
+      "terms": [
+        "roguelite car shooter",
+        "roguelike car shooter",
+        "car combat roguelite",
+        "driving roguelike shooter",
+        "roguelike car game Android"
+      ],
+      "intent": "Find replayable car combat with changing builds and lasting progression.",
+      "placement": "About heading, genre line, lead, progression question and schema. Roguelike is a search synonym; visible copy uses the more precise roguelite.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "en",
+      "cluster": "Camera and automatic fire",
+      "priority": "P1",
+      "estimated_reach": "medium",
+      "terms": [
+        "top down car shooter",
+        "auto shooter game Android",
+        "car game with automatic shooting",
+        "automatic weapons car game",
+        "car shooting survival game"
+      ],
+      "intent": "Find the camera perspective and control style shown in gameplay.",
+      "placement": "About section, shooting question and feature descriptions.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "en",
+      "cluster": "Waves and builds",
+      "priority": "P2",
+      "estimated_reach": "medium",
+      "terms": [
+        "wave survival game",
+        "car game with weapon upgrades",
+        "car game with boss fights",
+        "car game with drones",
+        "car game with permanent upgrades",
+        "bullet heaven car game"
+      ],
+      "intent": "Find hordes, build choices and progression between attempts.",
+      "placement": "About text, weapons feature, boss feature and progression question. Bullet heaven is a research synonym supported by the store; public site copy explains the mechanic.",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "en",
+      "cluster": "Brand and launch",
+      "priority": "P1",
+      "estimated_reach": "niche",
+      "terms": [
+        "Car Hero Survivor IO",
+        "Car Hero Survivor IO Android",
+        "Car Hero Survivor IO Google Play",
+        "Car Hero Survivor IO pre registration",
+        "Car Hero Survivor IO gameplay"
+      ],
+      "intent": "Reach the official game, screenshots and store destination.",
+      "placement": "H1, title, store button, screenshot gallery, launch question, canonical and sameAs.",
+      "source_ids": [
+        "S4"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "uk",
+      "cluster": "Виживання на машині",
+      "priority": "P1",
+      "estimated_reach": "medium",
+      "terms": [
+        "гра на виживання на машині",
+        "виживання на авто Android",
+        "виживання на колесах",
+        "бойові машини гра Android",
+        "гра про машину зі зброєю"
+      ],
+      "intent": "Знайти мобільне виживання, де гравець керує озброєним авто.",
+      "placement": "Вступ, жанровий блок, опис гри та запитання української сторінки.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "uk",
+      "cluster": "Автошутер і керування",
+      "priority": "P1",
+      "estimated_reach": "medium",
+      "terms": [
+        "автошутер Android",
+        "автомобільний шутер",
+        "шутер на машині з видом зверху",
+        "гра з автоматичною стрільбою",
+        "roguelite гра на Android",
+        "roguelike на машині"
+      ],
+      "intent": "Знайти автошутер за жанром, камерою або типом атаки.",
+      "placement": "Title, description, H2, жанровий рядок і запитання про стрільбу. Roguelike враховано як варіант запиту, текст описує roguelite-прогресію.",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "uk",
+      "cluster": "Хвилі, боси, гараж",
+      "priority": "P2",
+      "estimated_reach": "niche",
+      "terms": [
+        "гра проти хвиль ворогів",
+        "гра з прокачкою машини",
+        "поліпшення зброї в гаражі",
+        "автомобільні бої з босами",
+        "машина з туреллю і дронами"
+      ],
+      "intent": "Пошук за конкретною сценою або механікою.",
+      "placement": "Опис гри, блоки зброї й босів, запитання про постійні поліпшення.",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "locale": "uk",
+      "cluster": "Бренд і передреєстрація",
+      "priority": "P1",
+      "estimated_reach": "niche",
+      "terms": [
+        "Car Hero Survivor IO українською",
+        "Car Hero Survivor IO Android",
+        "Car Hero Survivor IO передреєстрація",
+        "Car Hero Survivor IO Google Play"
+      ],
+      "intent": "Знайти офіційну українську сторінку й перехід у магазин.",
+      "placement": "H1, метадані, передреєстрація, локалізований опис schema та hreflang.",
+      "source_ids": [
+        "S4"
+      ],
+      "demand_basis": "Hypothesis from genre vocabulary and verified mechanics; no measured search volume.",
+      "implementation": "semantic"
+    }
+  ],
+  "excluded": [
+    {
+      "game": "Sort That Cash!",
+      "terms": [
+        "earn real money",
+        "cash rewards",
+        "money making app",
+        "banking app",
+        "cash cleaner simulator",
+        "money laundering game",
+        "cashier simulator",
+        "idle tycoon",
+        "mobile sorting puzzle"
+      ],
+      "reason": "Wrong product, mechanics, platform or financial intent. Cash Cleaner is an adjacent title, not a target claim or page keyword."
+    },
+    {
+      "game": "Car Hero Survivor IO",
+      "terms": [
+        "zombie car game",
+        "racing simulator",
+        "drift racing",
+        "multiplayer car game",
+        "PvP car shooter",
+        "offline car game",
+        "no ads",
+        "iOS download",
+        "free APK"
+      ],
+      "reason": "Unsupported theme, mode, offline claim, monetization claim, platform or distribution. IO in the brand does not imply multiplayer."
+    }
+  ],
+  "implementation": {
+    "modified_pages": [
+      "/",
+      "/games/",
+      "/games/sort-that-cash/",
+      "/games/car-hero-survivor-io/",
+      "/games/car-hero-survivor-io/uk/"
+    ],
+    "changes": [
+      "Genre-focused unique titles and descriptions.",
+      "Open Graph and Twitter text; image descriptions.",
+      "Visible gameplay language and useful questions; no hidden keyword blocks.",
+      "VideoGame and BreadcrumbList data for each game page; Ukrainian schema uses the Ukrainian page URL and description.",
+      "Existing reciprocal Car Hero hreflang preserved.",
+      "Sitemap lastmod updated only for changed pages.",
+      "Steam home-page wishlist links replaced with newsletter updates until an actual listing exists.",
+      "Car Hero boss description aligned to current Google Play copy."
+    ],
+    "not_performed": [
+      "No Google Play Console or Steamworks listing edits.",
+      "No fabricated reviews, ratings, prices, release dates or software offers.",
+      "No meta-keywords tag or repeated exact-match keyword list."
+    ]
+  },
+  "store_handoff": {
+    "google_play_name": "Car Hero Survivor IO",
+    "google_play_short_description_existing": "Drive, upgrade weapons and survive in a roguelite car shooter with auto combat.",
+    "google_play_short_description_variant_en": "Survive enemy waves in a car shooter with auto weapons and roguelite upgrades.",
+    "google_play_short_description_variant_uk": "Виживай на бойовому авто: автоматична стрільба, хвилі ворогів і розвиток зброї.",
+    "note": "Draft variants only. Existing short copy is already relevant; test variants against store conversion rather than assuming a keyword rewrite will improve it.",
+    "steam_tag_candidates": [
+      "Organizing",
+      "Relaxing",
+      "Simulation",
+      "First-Person",
+      "Casual",
+      "Singleplayer"
+    ],
+    "steam_short_description_draft": "A first-person money sorting simulator. Turn a chaotic bank vault into shelves of neat cash bundles: sort banknotes, strap 100 matching notes and upgrade your equipment. Organize at your own pace, explore safe deposit boxes and make it rain."
+  },
+  "validation_plan": [
+    "After publication: verify Pages deployment and compare all five public page bodies with the committed content.",
+    "Search Console: compare page impressions, clicks, CTR and average position over 28 days, split by country and device, against a comparable baseline; early data for new pages may be sparse.",
+    "Classify queries into brand, sorting/organizing, car survival/shooter, and platform intent. Expand pages only for relevant impressions.",
+    "Measure actual newsletter signups and store referrals where existing tooling permits. Do not add tracking silently.",
+    "Google Play Console: use acquisition/search-term data and listing experiments for ASO validation; Steamworks: validate tags and store traffic after the page becomes public."
+  ]
+}

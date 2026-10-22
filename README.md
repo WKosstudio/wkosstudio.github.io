@@ -38,6 +38,38 @@ are preserved in web formats under `assets/carhero/`. Full screenshots use WebP;
 
 Public studio brand: **WKos**. Support: **wkos.studio@gmail.com**.
 
+## Search content and current store availability (October 22, 2026)
+
+This task targets the existing WKosStudio website above. The owner's spoken
+"Dabikus" was a voice-input error, not another studio or domain.
+The owner confirmed that **Sort That Cash! has no public Steam page yet**.
+Do not send wishlist buttons to Steam's home page or invent an App ID.
+Until the actual listing is supplied, use the studio newsletter for release
+updates and explain that the Steam page is coming soon. Earlier wishlist CTA
+instructions below are superseded only where they assume a public listing.
+
+Search research may include reasoned query hypotheses, as requested by the
+owner. Label inferred demand and priority as estimates; do not invent measured
+search volumes. Sort That Cash!'s primary genre is sorting / organizing /
+shelf sorting; cash is its theme. Car Hero's core is vehicle survival with
+automatic shooting and roguelite progression. Keep claims tied to verified
+mechanics and distinguish website SEO from Google Play ASO and Steam tags.
+
+The dated [search keyword core](docs/search-keyword-core-2026-10-22.json)
+records 84 phrase variants in 16 clusters, their sources, implementation
+locations and excluded intents. P1/P2 priorities and relative audience reach
+are editorial hypotheses, not measured keyword volumes. Most clusters are
+covered naturally in page copy; Ukrainian Sort That Cash! terms remain a
+research reserve until a full Ukrainian page is requested. Do not paste the
+entire core into visible keyword lists or meta keywords.
+
+On October 22, the live Google Play description was checked for Car Hero:
+regular sectors introduce their boss on a timer; marked collection nodes are
+introduced in the tutorial. The website's older all-sector node-route claim
+was corrected. Do not infer release availability from APK mirrors. Keep the
+last owner-confirmed pre-registration state until the store or owner clearly
+confirms a release for the relevant region.
+
 Owner-confirmed game order (October 12, 2026): **Sort That Cash!** (Steam)
 first, **Car Hero Survivor IO** second, and released **Dice Imprint Quest
 Puzzle** third. Use this order on the home page and in the game catalogue.
