@@ -128,7 +128,7 @@
             </p>
             <div class="stc-actions stc-in" style="--i:4">
               <!-- Steam page not public yet (owner, 2026-10-22); use newsletter until an actual App ID is supplied. -->
-              <a class="button button-primary button-shine" href="#subscribe">Get game updates</a>
+              <a class="button button-primary button-shine" href="#subscribe">Notify me at launch</a>
               <!-- TRAILER_URL: Sort That Cash! trailer -->
               <a class="button button-secondary" href="https://youtu.be/Ywlzks9bkrM" target="_blank" rel="noopener noreferrer">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
@@ -170,7 +170,7 @@
               <p>A first-person money sorting simulator. Organize over a million banknotes, strap cash bundles and fill the shelves. Coming to Steam for Windows and macOS.</p>
               <a class="text-link game-more" href="games/sort-that-cash/">More info…</a>
               <div class="game-tags"><span class="game-tag">PC · Steam</span></div>
-              <a class="button button-primary" href="#subscribe">Get game updates</a>
+              <a class="button button-primary" href="#subscribe">Notify me at launch</a>
             </div>
           </article>
           <article class="game-card" data-reveal>
@@ -273,37 +273,55 @@
       <section class="section-shell updates-section" id="subscribe">
         <div class="updates-panel" data-reveal>
           <div>
-            <p class="eyebrow">Updates</p>
-            <h2>Stay updated on new games & experiments.</h2>
+            <p class="eyebrow">Free email updates</p>
+            <h2>Be the first to play our next game.</h2>
           </div>
           <div class="updates-content">
-            <p>
-              Subscribe to the WKos newsletter. No spam, only honest updates about major game releases and public playtests.
-            </p>
-            <form id="subscribe-form" class="subscribe-form">
+            <ul class="sub-perks">
+              <li>Get the news on the Sort That Cash! Steam launch day</li>
+              <li>Get invites to public playtests</li>
+              <li>Hear about new WKos games first</li>
+            </ul>
+            <form
+              id="subscribe-form"
+              class="subscribe-form"
+              data-subscribe
+              data-success="form-success"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSdUuD0ug1OFvOweM67qSf0y3Kb5vzei81EBzdg2GtypHhUUjA/formResponse"
+              method="POST"
+              target="_blank"
+            >
               <div class="input-group">
+                <label class="visually-hidden" for="subscribe-email">Email address</label>
                 <input
                   type="email"
-                  name="email"
+                  name="entry.1104028759"
                   id="subscribe-email"
                   class="subscribe-input"
-                  placeholder="Enter your email address"
+                  placeholder="Your email address"
+                  autocomplete="email"
+                  inputmode="email"
                   required
                 />
                 <button type="submit" class="button button-primary subscribe-btn">
-                  <span>Subscribe</span>
+                  <span>Notify me</span>
                   <svg class="spinner" viewBox="0 0 50 50" aria-hidden="true">
                     <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
                   </svg>
                 </button>
               </div>
-              <p class="form-feedback error-feedback" id="form-error"></p>
+              <p class="form-feedback error-feedback" id="form-error" role="alert"></p>
+              <p class="sub-fine">Only major news, no spam. To unsubscribe, write to <a href="mailto:wkos.studio@gmail.com">wkos.studio@gmail.com</a>. <a href="privacy/index.html">Privacy</a></p>
             </form>
-            <div class="form-feedback success-feedback" id="form-success">
+            <div class="form-feedback success-feedback sub-success" id="form-success" role="status">
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <span>Thank you! You've successfully subscribed.</span>
+              <div>
+                <strong>You're on the list!</strong>
+                <span>We will email you when Sort That Cash! launches. Want to chat with the developer now?</span>
+                <a class="button button-secondary" href="https://discord.gg/HZG63Erjyk" target="_blank" rel="noopener noreferrer">Join Discord</a>
+              </div>
             </div>
           </div>
         </div>
@@ -335,77 +353,6 @@
     </footer>
 
     <script src="assets/site.js"></script>
-    <script>
-      // ==========================================================================
-      // Newsletter Subscription Logic (Google Forms Integration)
-      // ==========================================================================
-      
-      // НАЛАШТУВАННЯ GOOGLE FORMS:
-      // 1. Замініть 'YOUR_GOOGLE_FORM_ACTION_URL' на URL дії форми (закінчується на /formResponse)
-      // 2. Замініть 'YOUR_GOOGLE_FORM_EMAIL_FIELD' на ім'я поля вводу (наприклад, entry.1804791090)
-      const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdUuD0ug1OFvOweM67qSf0y3Kb5vzei81EBzdg2GtypHhUUjA/formResponse';
-      const GOOGLE_FORM_EMAIL_FIELD = 'entry.1104028759';
-
-      const subscribeForm = document.getElementById('subscribe-form');
-      if (subscribeForm) {
-        subscribeForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const emailInput = document.getElementById('subscribe-email');
-          const submitBtn = subscribeForm.querySelector('.subscribe-btn');
-          const errorFeedback = document.getElementById('form-error');
-          const successFeedback = document.getElementById('form-success');
-          
-          // Скидання стану помилок
-          errorFeedback.classList.remove('is-visible');
-          errorFeedback.textContent = '';
-          
-          // Візуальний стан завантаження
-          submitBtn.classList.add('is-loading');
-          submitBtn.disabled = true;
-          emailInput.disabled = true;
-          
-          const emailValue = emailInput.value.trim();
-          
-          // Локальна імітація успішного запиту, якщо налаштування ще дефолтні (для тестів інтерфейсу)
-          const isPlaceholder = GOOGLE_FORM_ACTION_URL.includes('YOUR_GOOGLE_FORM_ACTION_URL') || 
-                                GOOGLE_FORM_EMAIL_FIELD.includes('YOUR_GOOGLE_FORM_EMAIL_FIELD');
-          
-          if (isPlaceholder) {
-            console.log('WKos Studio Demo: Використовуються плейсхолдери Google Forms. Імітація успішної відправки...');
-            setTimeout(() => {
-              submitBtn.classList.remove('is-loading');
-              subscribeForm.style.display = 'none';
-              successFeedback.classList.add('is-visible');
-            }, 1000);
-            return;
-          }
-          
-          // Створення FormData для відправки
-          const formData = new FormData();
-          formData.append(GOOGLE_FORM_EMAIL_FIELD, emailValue);
-          
-          // Асинхронний запит на Google Forms (no-cors дозволяє уникнути блокування CORS)
-          fetch(GOOGLE_FORM_ACTION_URL, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors'
-          })
-          .then(() => {
-            submitBtn.classList.remove('is-loading');
-            subscribeForm.style.display = 'none';
-            successFeedback.classList.add('is-visible');
-          })
-          .catch((error) => {
-            console.error('Subscription error:', error);
-            submitBtn.classList.remove('is-loading');
-            submitBtn.disabled = false;
-            emailInput.disabled = false;
-            errorFeedback.textContent = 'Oops! Something went wrong. Please try again.';
-            errorFeedback.classList.add('is-visible');
-          });
-        });
-      }
-    </script>
+    <script src="assets/subscribe.js"></script>
   </body>
 </html>
