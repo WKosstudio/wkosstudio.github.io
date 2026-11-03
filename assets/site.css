@@ -1452,3 +1452,18 @@ html:has(.sub-dialog[open]) {
 .subscribe-form .error-feedback {
   color: #ff453a;
 }
+
+.about-tags {
+  margin: 0.5rem 0 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .social-row {
+    gap: 0.5rem;
+  }
+
+  .social-row a {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
