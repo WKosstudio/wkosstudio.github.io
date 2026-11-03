@@ -25,8 +25,8 @@ For local preview, run `python3 -m http.server 8765 --bind 127.0.0.1` here.
 - Support: `/carhero/support/`
 
 Use the existing legal URLs: they are already referenced by the studio site.
-The Car Hero pages use `assets/site.css` and `assets/carhero.css`. They need no
-JavaScript and install no analytics or advertising trackers. EN/UK translations
+The Car Hero pages use `assets/site.css` and `assets/carhero.css`. They install no site analytics or advertising trackers. The trailer uses the
+scoped `assets/carhero-media.js` click-to-load player described below. EN/UK translations
 are separate static pages with canonical and hreflang links. Legal text is EN;
 support includes Ukrainian instructions.
 
@@ -152,3 +152,21 @@ future mediation does not authorize undisclosed providers or new purposes.
 Policies are based on the official Google AdMob, Firebase, Google Play Games,
 Unity IAP / ironSource disclosures linked in the public Privacy Policy.
 Preserve all other games and their legal pages when making Car Hero changes.
+
+## Car Hero approved media update — November 3, 2026
+
+EN and UK game pages use the approved v008 seven-image sets: six combat
+views across Desert, Frostline and Forest, plus the native Roadbreaker garage.
+Full-size versioned WebP files are lossless copies of the approved PNG pixels;
+540×960 thumbnails are lightweight WebP derivatives. Earlier assets remain
+available for existing links; the visible gallery uses v008 only.
+
+The two approved 30-second v006 YouTube trailers share one responsive player.
+At widths up to 1023px it selects the native portrait upload; wider windows use
+the landscape upload. No YouTube iframe is created before the play button is
+pressed. Only the selected upload is embedded on youtube-nocookie.com.
+Crossing the breakpoint removes the old iframe (stopping playback and sound)
+and resets the poster/play button; it never starts two players. The poster is
+a local still from the corresponding approved video. Native button controls,
+iframe titles, focus return on resize, direct YouTube links and no-JavaScript
+fallback links are provided in both languages. Hosting/workflow unchanged.
