@@ -102,7 +102,7 @@
   ]
 }</script>
   </head>
-  <body data-page="game">
+  <body data-page="game" data-sub-bar>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-reveal>
@@ -291,6 +291,61 @@
         <button class="gp-nav gp-next" type="button" aria-label="Next">›</button>
         <span class="gp-lb-count"></span>
       </div>
+      <section class="section-shell updates-section" id="subscribe">
+        <div class="updates-panel" data-reveal>
+          <div>
+            <p class="eyebrow">Free email updates</p>
+            <h2>Get Sort That Cash! on launch day.</h2>
+          </div>
+          <div class="updates-content">
+            <ul class="sub-perks">
+              <li>Get the news on Steam launch day</li>
+              <li>Get invites to public playtests</li>
+              <li>Hear about new WKos games first</li>
+            </ul>
+            <form
+              class="subscribe-form"
+              data-subscribe
+              data-success="game-form-success"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSdUuD0ug1OFvOweM67qSf0y3Kb5vzei81EBzdg2GtypHhUUjA/formResponse"
+              method="POST"
+              target="_blank"
+            >
+              <div class="input-group">
+                <label class="visually-hidden" for="game-subscribe-email">Email address</label>
+                <input
+                  type="email"
+                  name="entry.1104028759"
+                  id="game-subscribe-email"
+                  class="subscribe-input"
+                  placeholder="Your email address"
+                  autocomplete="email"
+                  inputmode="email"
+                  required
+                />
+                <button type="submit" class="button button-primary subscribe-btn">
+                  <span>Notify me</span>
+                  <svg class="spinner" viewBox="0 0 50 50" aria-hidden="true">
+                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                  </svg>
+                </button>
+              </div>
+              <p class="form-feedback error-feedback" role="alert"></p>
+              <p class="sub-fine">Only major news, no spam. To unsubscribe, write to <a href="mailto:wkos.studio@gmail.com">wkos.studio@gmail.com</a>. <a href="../../privacy/index.html">Privacy</a></p>
+            </form>
+            <div class="form-feedback success-feedback sub-success" id="game-form-success" role="status">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong>You're on the list!</strong>
+                <span>We will email you when Sort That Cash! launches. Want to chat with the developer now?</span>
+                <a class="button button-secondary" href="https://discord.gg/HZG63Erjyk" target="_blank" rel="noopener noreferrer">Join Discord</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer" id="contact">

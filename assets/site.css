@@ -1129,6 +1129,113 @@ html:has(.sub-dialog[open]) {
   fill: currentColor;
 }
 
+/* Sticky bottom bar with a sign-up button */
+.sub-bar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100% - 1.5rem, 30rem);
+  padding: 0.55rem 0.55rem 0.55rem 0.75rem;
+  border: 1px solid rgba(255, 214, 10, 0.25);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 214, 10, 0.1), transparent 55%),
+    rgba(22, 24, 29, 0.92);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translate(-50%, calc(100% + 1.5rem));
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sub-bar.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.sub-bar-logo {
+  flex: none;
+  width: 3.4rem;
+  height: auto;
+}
+
+.sub-bar-text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.sub-bar-text strong {
+  overflow: hidden;
+  color: var(--text);
+  font-family: "Exo 2", sans-serif;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sub-bar-text span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sub-bar .button {
+  flex: none;
+  width: auto;
+  min-height: 2.6rem;
+  padding: 0.6rem 1.15rem;
+}
+
+.sub-bar .button:hover,
+.sub-bar .button:focus-visible {
+  transform: none;
+}
+
+.sub-bar-close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.sub-bar-close:hover,
+.sub-bar-close:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.sub-bar-close svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+@media (max-width: 360px) {
+  .sub-bar-logo {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .subscribe-form .input-group {
     flex-direction: column;

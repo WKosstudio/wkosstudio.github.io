@@ -165,8 +165,80 @@
     }
   };
 
+  // ---------- Sticky bottom bar (pages with <body data-sub-bar>) ----------
+  // Shows a small "Notify me" bar after the first screen. It hides when another
+  // sign-up button or form is on screen, near the footer, after sign-up,
+  // or after the visitor closes it (for this browser session).
+  const BAR_DISMISS_KEY = "wkos-sub-bar-closed";
+
+  const initBar = () => {
+    if (!document.body.hasAttribute("data-sub-bar") || !supportsDialog) return;
+    if (isSubscribed()) return;
+    try {
+      if (sessionStorage.getItem(BAR_DISMISS_KEY) === "1") return;
+    } catch (error) {
+      /* storage blocked: show the bar */
+    }
+
+    const bar = document.createElement("div");
+    bar.className = "sub-bar";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Game updates");
+    bar.innerHTML = `
+      <img class="sub-bar-logo" src="${assetUrl("sort-that-cash/logo-640.webp")}" alt="" width="640" height="380" />
+      <p class="sub-bar-text"><strong>Sort That Cash!</strong><span>Coming to Steam</span></p>
+      <a class="button button-primary" href="#subscribe">Notify me</a>
+      <button class="sub-bar-close" type="button" aria-label="Hide this bar">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.3 5.71 12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71l1.42-1.42L12 10.59l6.29-6.3z"/></svg>
+      </button>`;
+    document.body.appendChild(bar);
+
+    let closed = false;
+    const visibleTargets = new Set();
+    const update = () => {
+      const pastFirstScreen = window.scrollY > window.innerHeight * 0.75;
+      const show = !closed && pastFirstScreen && visibleTargets.size === 0;
+      bar.classList.toggle("is-visible", show);
+      bar.inert = !show;
+    };
+
+    const close = (remember) => {
+      closed = true;
+      update();
+      if (remember) {
+        try {
+          sessionStorage.setItem(BAR_DISMISS_KEY, "1");
+        } catch (error) {
+          /* ignore */
+        }
+      }
+    };
+
+    bar.querySelector(".sub-bar-close").addEventListener("click", () => close(true));
+    document.addEventListener("wkos:subscribed", () => close(false));
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visibleTargets.add(entry.target);
+          else visibleTargets.delete(entry.target);
+        });
+        update();
+      });
+      document
+        .querySelectorAll('a.button[href$="#subscribe"], form[data-subscribe], .site-footer')
+        .forEach((el) => {
+          if (!bar.contains(el)) observer.observe(el);
+        });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  };
+
   const init = () => {
     document.querySelectorAll("form[data-subscribe]").forEach(bindForm);
+    initBar();
 
     // Already subscribed on an earlier visit: show the thank-you state instead of the form.
     if (isSubscribed()) {
