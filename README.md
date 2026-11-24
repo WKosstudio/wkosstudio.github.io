@@ -170,3 +170,8 @@ and resets the poster/play button; it never starts two players. The poster is
 a local still from the corresponding approved video. Native button controls,
 iframe titles, focus return on resize, direct YouTube links and no-JavaScript
 fallback links are provided in both languages. Hosting/workflow unchanged.
+
+
+## Car Hero Google Play icon and screenshots update — November 24, 2026
+
+Updated `assets/carhero/icon.png` from the approved Google Play F1 icon (`CarHero_Icon_F1_GooglePlay_512.png`, 512×512 RGBA, applied November 13, 2026) and updated both EN and UK Car Hero galleries to the approved six-image `v012` Google Play sets (`screenshot-v012-01..06-{en-US,uk}.webp` lossless WebP + 540×960 `thumb-v012-01..06-{en-US,uk}.webp`). Earlier `v008` assets remain preserved for existing links.

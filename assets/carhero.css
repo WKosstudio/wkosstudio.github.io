@@ -23,7 +23,7 @@
 .ch-feature h3 { font-size: 1.35rem; line-height: 1.2; }
 .ch-feature p { color: #c4c4bd; margin-bottom: 0; }
 .ch-feature .ch-number { color: #ffd60a; font-family: 'Exo 2', sans-serif; font-size: 1.1rem; display: block; margin-bottom: 1.5rem; }
-.ch-gallery { display: grid; grid-template-columns: repeat(7, minmax(220px, 1fr)); gap: 1rem; overflow-x: auto; padding: .4rem .2rem 1.2rem; scroll-snap-type: x mandatory; }
+.ch-gallery { display: grid; grid-template-columns: repeat(6, minmax(220px, 1fr)); gap: 1rem; overflow-x: auto; padding: .4rem .2rem 1.2rem; scroll-snap-type: x mandatory; }
 .ch-gallery a { scroll-snap-align: start; border-radius: 1rem; }
 .ch-gallery img { display: block; width: 100%; height: auto; border-radius: 1rem; }
 .ch-links { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-top: 1rem; }
@@ -50,7 +50,7 @@
   .ch-section { padding: 2.2rem 0; }
   .ch-title img { width: 64px; height: 64px; }
   .ch-panel { padding: 1.3rem; }
-  .ch-gallery { grid-template-columns: repeat(7, minmax(245px, 1fr)); }
+  .ch-gallery { grid-template-columns: repeat(6, minmax(245px, 1fr)); }
   .ch-page .site-nav { flex-wrap: wrap; }
   .ch-page .site-nav a { padding: .4rem .5rem; }
 }
